@@ -1,5 +1,4 @@
 import os
-
 import requests
 from datetime import datetime
 from dotenv import load_dotenv
@@ -11,15 +10,14 @@ APP_KEY = os.getenv("APP_KEY")
 USER = os.getenv("USER")
 PASSWORD = os.getenv("PASSWORD")
 
-nutrition_endpoint = "https://trackapi.nutritionix.com/v2/natural/exercise"
-headers = {
-    "x-app-id": APP_ID,
-    "x-app-key": APP_KEY,
-    "content-type": "application/json"
-}
-
 
 def post_workout(workout):
+    nutrition_endpoint = "https://trackapi.nutritionix.com/v2/natural/exercise"
+    headers = {
+        "x-app-id": APP_ID,
+        "x-app-key": APP_KEY,
+        "content-type": "application/json"
+    }
     params = {
         "query": workout,
         "gender": "male",
@@ -27,7 +25,6 @@ def post_workout(workout):
         "height_cm": 1.88,
         "age": 31
     }
-
     post = requests.post(url=nutrition_endpoint, json=params, headers=headers)
     post.raise_for_status()
     response = post.json()
