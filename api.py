@@ -3,14 +3,19 @@ import requests
 from datetime import datetime
 from yaml import safe_load
 
-with open('config.yaml', 'r') as file:
-    config = safe_load(file)
+# with open('config.yaml', 'r') as file:
+#     config = safe_load(file)
+# APP_ID = config['fit_api']['app_id']
+# APP_KEY = config['fit_api']['app_key']
+# USER = config['google_sheet']['username']
+# PASSWORD = config['google_sheet']['password']
 
 
-APP_ID = config['fit_api']['app_id']
-APP_KEY = config['fit_api']['app_key']
-USER = config['google_sheet']['username']
-PASSWORD = config['google_sheet']['password']
+APP_ID = os.getenv("app_id")
+APP_KEY = os.getenv("app_key")
+USER = os.getenv("username")
+PASSWORD = os.getenv("password")
+
 AARON_G = "male"
 AARON_W = 78.02
 AARON_H = 188
