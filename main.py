@@ -4,6 +4,11 @@ from flask import Flask, render_template, request, redirect
 app = Flask(__name__)
 
 
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+
 @app.route('/post_workout', methods=["POST"])
 def post_workout():
 
@@ -20,11 +25,6 @@ def post_workout():
     # Add workout to google sheet
     add_to_sheet(user=user, exercise=activity, calories=calories, duration=duration)
     return redirect("https://docs.google.com/spreadsheets/d/1MtPsT8bg-GZpLnHVlCNj5YKAwRsliFeCOcghJAuZ8C8/edit#gid=0")
-
-
-@app.route('/')
-def home():
-    return render_template('index.html')
 
 
 if __name__ == "__main__":
