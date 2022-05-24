@@ -85,7 +85,7 @@ def smtp_email(from_addr, email_message, name):
             connection.login(user=GMAIL, password=GMAIL_KEY)
             connection.sendmail(
                 from_addr=from_addr,
-                to_addrs=GMAIL,
+                to_addrs="aboyles05@gmail.com",
                 msg=f"Subject: New Inquiry from {name} at {from_addr}!\n\n"
                     f"{email_message}"
             )
