@@ -60,7 +60,7 @@ def get_results(workout, user):
 
 
 def add_to_sheet(exercise, calories, duration, user):
-    today = datetime.now().date().strftime("%m/%d/%Y")
+    today = datetime.now().date().strftime("%x")
     current_time = datetime.now().time().strftime("%I:%M %p")
     add_endpoint = "https://api.sheety.co/f1d4d46bfaa887c14bc9043c594ef651/workoutTracking/sheet1"
     data = {
@@ -90,10 +90,8 @@ def smtp_email(from_addr, email_message, name):
                     f"{email_message}"
             )
         return True
-    except SMTPAuthenticationError as e:
-        print(e)
+    except SMTPAuthenticationError:
         return "invalid credentials"
-    except SMTPResponseException as e:
-        print(e)
+    except SMTPResponseException:
         return False
 
